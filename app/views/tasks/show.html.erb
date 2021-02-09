@@ -1,7 +1,18 @@
 <h1> <%= @task.title %> </h1>
+<%= link_to(edit_task_path(@task)) do %>
+<button> Edit task </button>
+<% end %>
 <ul> 
-<li> Detail: <strong> <%= @task.detail %> </strong> </li>
+<li> Details: <strong> <%= @task.detail %> </strong> </li>
 <li> Completed: <strong> <%= @task.completed %> </strong> </li>
 </ul>
 
-<%= link_to "Back to list", tasks_path %>
+
+<p> <%= link_to "Delete #{@task.title}",
+            task_path(@task),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+</p>
+
+<p> <%= link_to "Back to list", tasks_path %>
+</p>
